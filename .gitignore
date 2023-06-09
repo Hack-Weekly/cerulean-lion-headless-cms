@@ -1,0 +1,39 @@
+# Dependency directories
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor folders and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Database files
+*.sql
+*.db
+dump.sql
+
+# WordPress specific
+wp-content/uploads/
+wp-config.php
