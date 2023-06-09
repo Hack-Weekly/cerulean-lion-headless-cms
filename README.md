@@ -1,6 +1,6 @@
 <H1> Project Overview </>
 
-  <P> Cerulean Lion is tasked with building a function headless CMS website, with a decoupled front-end and back-end. </P>
+  <p> Cerulean Lion is tasked with building a function headless CMS website, with a decoupled front-end and back-end. </p>
   
   
 <H2> Tech Stack </H2>
