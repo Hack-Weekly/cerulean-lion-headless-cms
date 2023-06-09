@@ -21,6 +21,9 @@
   
   
 <H5> Project Roles </H5>
+
 • FE: Gandrito247, Random Dude, dna, flying knees, Cashout, Egat, Exo
+
 • BE: iustusae aka TOM, Devam, Shotdown, SomeDude
+
 • ARCHITECTURE: Obi, Pythagore
