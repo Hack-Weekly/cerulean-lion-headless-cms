@@ -18,3 +18,9 @@
   <li> Develop a functional headless CMS website. </li>
   <li> Ensure the Home page is populated with engaging text and images. </li>
   <li> Implement a Blog page featuring blog posts. </li>
+  
+  
+<H5> Project Roles </H5>
+• FE: Gandrito247, Random Dude, dna, flying knees, Cashout, Egat, Exo
+• BE: iustusae aka TOM, Devam, Shotdown, SomeDude
+• ARCHITECTURE: Obi, Pythagore
