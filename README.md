@@ -18,6 +18,3 @@
   <li> Develop a functional headless CMS website. </li>
   <li> Ensure the Home page is populated with engaging text and images. </li>
   <li> Implement a Blog page featuring blog posts. </li>
-  <li> Implement a user sign-up process and account creation feature. </li>
-  <li> Enable users to like, share, or comment on individual posts. </li>
-  <li> Allow users to track their recently liked posts on their user profile page. </li>
