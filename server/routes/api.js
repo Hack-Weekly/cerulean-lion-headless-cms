@@ -5,24 +5,23 @@ const User = require("../models/user");
 const passport = require("passport");
 const authRouter = express.Router();
 const jwt = require("jsonwebtoken");
-require('dotenv').config();
+require("dotenv").config();
 
 const authenticateToken = (req, res, next) => {
-    // Get the token from the request cookies
-    const token = req.cookies.token;
-  
-    // Verify the token
-    jwt.verify(token, process.env.JWT_KEY, (err, decoded) => {
-      if (err) {
-        return res.status(401).json({ message: "Invalid token" });
-      }
-  
-      // Token is valid, set the user object in the request
-      req.user = decoded;
-      next();
-    });
-  };
-  
+  // Get the token from the request cookies
+  const token = req.session.cookies.token;
+
+  // Verify the token
+  jwt.verify(token, process.env.JWT_KEY, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ message: "Invalid token" });
+    }
+
+    // Token is valid, set the user object in the request
+    req.user = decoded;
+    next();
+  });
+};
 
 authRouter.post("/register", (req, res) => {
   const { username, password } = req.body;
@@ -42,7 +41,7 @@ authRouter.post("/register", (req, res) => {
     });
 });
 
-authRouter.post("/login",  async (req, res) => {
+authRouter.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
 
@@ -58,7 +57,7 @@ authRouter.post("/login",  async (req, res) => {
       return res.status(401).json({ error: "Incorrect password" });
     }
 
-    const token = generateToken(user);
+    const token = generateToken(req, res, user);
 
     res.json({ token });
   } catch (err) {
@@ -94,7 +93,6 @@ const generateToken = (user, res) => {
 
   return token;
 };
-
 
 router.post("/posts", authenticateToken, (req, res) => {
   const { title, content } = req.body;
@@ -145,7 +143,7 @@ router.put("/posts/:id", authenticateToken, (req, res) => {
   });
 });
 
-router.delete("/posts/:id",authenticateToken, (req, res) => {
+router.delete("/posts/:id", authenticateToken, (req, res) => {
   const { id } = req.params;
   Post.findByIdAndDelete(id, (err, post) => {
     if (err) {
@@ -158,47 +156,47 @@ router.delete("/posts/:id",authenticateToken, (req, res) => {
   });
 });
 
-router.post('/posts/:id/comments', authenticateToken, (req, res) => {
-    const { id } = req.params;
-    const { content } = req.body;
-  
-    Post.findById(id, (err, post) => {
+router.post("/posts/:id/comments", authenticateToken, (req, res) => {
+  const { id } = req.params;
+  const { content } = req.body;
+
+  Post.findById(id, (err, post) => {
+    if (err) {
+      res.status(500).send(err);
+    } else if (!post) {
+      res.status(404).send("Post not found");
+    } else {
+      const comment = {
+        content: content,
+        user: req.user._id,
+      };
+      post.comments.push(comment);
+      post.save((err) => {
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.send("Comment added successfully");
+        }
+      });
+    }
+  });
+});
+
+router.get("/posts/:id/comments", (req, res) => {
+  const { id } = req.params;
+
+  Post.findById(id)
+    .populate("comments.user", "username") // Populate the user field in comments with only the username
+    .exec((err, post) => {
       if (err) {
         res.status(500).send(err);
       } else if (!post) {
-        res.status(404).send('Post not found');
+        res.status(404).send("Post not found");
       } else {
-        const comment = {
-          content: content,
-          user: req.user._id,
-        };
-        post.comments.push(comment);
-        post.save((err) => {
-          if (err) {
-            res.status(500).send(err);
-          } else {
-            res.send('Comment added successfully');
-          }
-        });
+        res.json(post.comments);
       }
     });
-  });
-
-  router.get('/posts/:id/comments', (req, res) => {
-    const { id } = req.params;
-  
-    Post.findById(id)
-      .populate('comments.user', 'username') // Populate the user field in comments with only the username
-      .exec((err, post) => {
-        if (err) {
-          res.status(500).send(err);
-        } else if (!post) {
-          res.status(404).send('Post not found');
-        } else {
-          res.json(post.comments);
-        }
-      });
-  });
+});
 
 router.use("/auth", authRouter);
 
