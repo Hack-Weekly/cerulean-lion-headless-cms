@@ -129,7 +129,7 @@ router.get("/posts/:username", (req, res) => {
       if (!user) {
         res.status(404).send("User not found");
       } else {
-        Post.find({ user: user._id })
+        Post.find({ username: user.username })
           .then((posts) => {
             res.status(200).json(posts);
           })
