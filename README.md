@@ -10,7 +10,7 @@
   
 <H2> Build Process </H2>
   <P> Our build process is simple. First, we design our site using a vector editor such as Figma/Sketch. Next, we handoff our design to our frontend dev team, who then use Next.Js to create components that render our site according to the design teams specifications. Since Wordpress.com manages the API endpoints as well as the database, there is not much backend implementation needed. </P>
-  
+
 
 <H2> Technical Requirements </H2>
 
