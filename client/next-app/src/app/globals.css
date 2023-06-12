@@ -25,3 +25,40 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.vertical-navbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 15%;
+  background-color: #007BA7;
+  padding: 20px;
+}
+
+.navbar-links {
+  display: block;
+  /* margin-bottom: 10px; */
+  /* color: #333; */
+  text-decoration: none;
+}
+
+.links-container {
+  height: 80%;
+  /* bottom: 0; */
+  display: grid;
+  place-items: center;
+
+}
+
+.nav-container {
+  /* height: 100%; */
+  display: grid;
+  place-items: center;
+  grid-gap: 10px;
+}
+
+.title-container {
+  margin-top: 15%;
+  font-size: 30px;
+}

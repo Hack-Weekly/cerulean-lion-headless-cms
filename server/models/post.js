@@ -32,7 +32,9 @@ const postSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
+
   username: String, // Add the username field to the schema
+  
   comments: [commentSchema],
 });
 

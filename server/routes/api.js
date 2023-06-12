@@ -148,14 +148,14 @@ router.get("/posts/:username", (req, res) => {
 router.get("/posts/:id", (req, res) => {
   const { id } = req.params;
   Post.findById(id, {})
-    .then((post) => {
+    .then(post => {
       if (!post) {
         res.status(404).send("Post not found");
       } else {
         res.status(200).json(post);
       }
     })
-    .catch((err) => {
+    .catch(err => {
       console.error("Error getting post:", err);
       return res.status(500).json({ message: "Internal Server Error" });
     });
@@ -228,14 +228,14 @@ router.get("/posts/:id/comments", (req, res) => {
 
   Post.findById(id)
     //.populate("comments.user", "username") // Populate the user field in comments with only the username
-    .then((post) => {
+    .then(post => {
       if (!post) {
         res.status(404).send("Post not found");
       } else {
         res.json(post.comments);
       }
     })
-    .catch((err) => {
+    .catch((err => {
       console.error("Error getting comments:", err);
       return res.status(500).json({ message: "Internal Server Error" });
     });
