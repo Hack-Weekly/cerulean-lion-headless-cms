@@ -9,12 +9,13 @@ require("dotenv").config();
 
 const authenticateToken = (req, res, next) => {
   // Get the token from the request cookies
-  const token = req.session.cookies.token;
+  const token = req.cookies.token;
 
   // Verify the token
   jwt.verify(token, process.env.JWT_KEY, (err, decoded) => {
     if (err) {
-      return res.status(401).json({ message: "Invalid token" });
+      console.error('Token verification error:', err);
+      return res.status(403).json({ message: 'Invalid authentication token' });
     }
 
     // Token is valid, set the user object in the request
@@ -96,89 +97,116 @@ const generateToken = (user, res) => {
 
 router.post("/posts", authenticateToken, (req, res) => {
   const { title, content } = req.body;
-  const post = new Post({ title, content });
-  post.save((err) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(200).send("Post created Successfully");
-    }
-  });
+  const post = new Post({ title, content, user: req.user._id });
+  post.save({})
+    .then((post) => {
+      res.status(200).json("Post created Successfully");
+    })
+    .catch((err) => {
+      console.error('Error getting posts:', err);
+      return res.status(500).json({ message: 'Internal Server Error' });
+    });
 });
 
 router.get("/posts", (req, res) => {
-  Post.find({}, (err, posts) => {
-    if (err) {
-      res.status(500).send(err);
+  Post.find({})
+    .then((posts) => {
+      res.status(200).json(posts);
+    })
+    .catch((err) => {
+      console.error('Error getting posts:', err);
+      return res.status(500).json({ message: 'Internal Server Error' });
+    });
+});
+
+router.get("/:user/posts", (req, res) => {
+  const { user } = req.params;
+  Post.findByUsername(user)
+  .then(posts => {
+    if (!posts) {
+      res.status(404).send("Post not found");
     } else {
       res.status(200).json(posts);
     }
+  })
+  .catch(err => {
+    console.error('Error getting post:', err);
+    return res.status(500).json({ message: 'Internal Server Error' });
   });
 });
 
 router.get("/posts/:id", (req, res) => {
   const { id } = req.params;
-  Post.findById(id, (err, post) => {
-    if (err) {
-      res.status(500).send(err);
-    } else if (!post) {
-      res.status(404).send("Post not found");
-    } else {
-      res.status(200).json(post);
-    }
-  });
+  Post.findById(id, {})
+    .then(post => {
+      if (!post) {
+        res.status(404).send("Post not found");
+      } else {
+        res.status(200).json(post);
+      }
+    })
+    .catch(err => {
+      console.error('Error getting post:', err);
+      return res.status(500).json({ message: 'Internal Server Error' });
+    });
 });
 
 router.put("/posts/:id", authenticateToken, (req, res) => {
   const { id } = req.params;
   const { title, content } = req.body;
-  Post.findByIdAndUpdate(id, { title, content }, { new: true }, (err, post) => {
-    if (err) {
-      res.status(500).send(err);
-    } else if (!post) {
+  Post.findByIdAndUpdate(id, {title, content, user: req.user._id})
+  .then(post => {
+    if (!post) {
       res.status(404).send("Post Not Found");
     } else {
-      res.send("Post updated Successfully!");
+      res.status(200).send("Post updated Successfully!");
     }
+  })
+  .catch(err => {
+    console.error('Error updating post:', err);
+    return res.status(500).json({ message: 'Internal Server Error' });
   });
 });
 
 router.delete("/posts/:id", authenticateToken, (req, res) => {
   const { id } = req.params;
-  Post.findByIdAndDelete(id, (err, post) => {
-    if (err) {
-      res.status(500).send(err);
-    } else if (!post) {
+  Post.findByIdAndDelete(id, {}).then(post => {
+    if (!post) {
       res.status(404).send("Post Not Found!");
     } else {
       res.status(200).send("Post Deleted Successfully!");
     }
+  })
+  .catch(err => {
+    console.error('Error deleting post:', err);
+    return res.status(500).json({ message: 'Internal Server Error' });
   });
 });
 
 router.post("/posts/:id/comments", authenticateToken, (req, res) => {
   const { id } = req.params;
   const { content } = req.body;
-
-  Post.findById(id, (err, post) => {
-    if (err) {
-      res.status(500).send(err);
-    } else if (!post) {
+  Post.findById(id, {}).then(post => {
+    if (!post) {
       res.status(404).send("Post not found");
     } else {
       const comment = {
         content: content,
-        user: req.user._id,
+        user: req.user.username,
       };
       post.comments.push(comment);
-      post.save((err) => {
-        if (err) {
-          res.status(500).send(err);
-        } else {
-          res.send("Comment added successfully");
-        }
+      post.save({})
+      .then(postComment => {
+        res.status(200).send("Comment added successfully");
+      })
+      .catch(err => {
+        res.status(500).send(err);
       });
     }
+  })
+  .catch(err => {
+    console.error('Error posting comment:', err);
+    return res.status(500).json({ message: 'Internal Server Error' });
   });
 });
 
@@ -186,15 +214,17 @@ router.get("/posts/:id/comments", (req, res) => {
   const { id } = req.params;
 
   Post.findById(id)
-    .populate("comments.user", "username") // Populate the user field in comments with only the username
-    .exec((err, post) => {
-      if (err) {
-        res.status(500).send(err);
-      } else if (!post) {
+    //.populate("comments.user", "username") // Populate the user field in comments with only the username
+    .then(post => {
+      if (!post) {
         res.status(404).send("Post not found");
       } else {
         res.json(post.comments);
       }
+    })
+    .catch(err => {
+      console.error('Error getting comments:', err);
+      return res.status(500).json({ message: 'Internal Server Error' });
     });
 });
 
