@@ -66,8 +66,8 @@ authRouter.post("/login", (req, res) => {
     });
 });
 
-authRouter.get("/logout", (req, res) => {
-  res.logout();
+authRouter.post("/logout", (req, res) => {
+  res.clearCookie("cerulean_token");
   res.send("Logged out!");
 });
 
@@ -85,7 +85,7 @@ const generateToken = (req, res, user) => {
   const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
 
   // Set the token as a cookie in the response
-  res.cookie("token", token, { maxAge: 3600000, httpOnly: true }); // Adjust the maxAge and options as per your requirements
+  res.cookie("cerulean_token", token, { maxAge: 3600000, httpOnly: true }); // Adjust the maxAge and options as per your requirements
 
   return token;
 };
