@@ -9,10 +9,15 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <main className={`${inter.className}`}>
+    <main className={"columns-3 `${inter.className}`"}>
       <div>
-        <NavBar />
-        <MainArticle />
+        <h1>hello</h1>
+      </div>
+      <div>
+        <h1>hello</h1>
+      </div>
+      <div>
+        <h1>hello</h1>
       </div>
     </main>
   );
