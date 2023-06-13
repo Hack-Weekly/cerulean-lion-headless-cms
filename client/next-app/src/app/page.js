@@ -1,13 +1,19 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import NavBar from "./components/ui/NavBar";
-import MainArticle from "./components/MainArticle";
+import { Inter } from "next/font/google";
+import NavBar from "@/components/NavBar";
+import MainArticle from "@/components/MainArticle";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <main>
-      <NavBar />
-      <MainArticle />
+    <main className={`${inter.className}`}>
+      <div>
+        <NavBar />
+        <MainArticle />
+      </div>
     </main>
   );
 }

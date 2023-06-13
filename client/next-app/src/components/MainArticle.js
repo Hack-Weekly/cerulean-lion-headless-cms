@@ -1,3 +1,4 @@
+"use client";
 export default function MainArticle() {
   return (
     <div className="main-article">
