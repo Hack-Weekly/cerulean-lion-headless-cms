@@ -8,6 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        heading: ["Tilt Prism", "cursive"],
         general: ["Orbitron", "sans-serif"],
       },
       backgroundImage: {

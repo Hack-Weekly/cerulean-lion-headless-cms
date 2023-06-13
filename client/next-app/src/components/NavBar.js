@@ -12,11 +12,11 @@ export default function NavBar() {
   return (
     <div className="vertical-navbar">
       <Image src={logo} alt="cerulean-lion" />
-      <h1 className="title-container font-general text-center">
+      <h1 className="title-container font-heading text-center">
         Cerulean Lion
       </h1>
       <div className="links-container">
-        <div className="nav-container">
+        <div className="nav-container font-general">
           <Link href="/">Home</Link>
           <Link href="/blog" className="navbar-links">
             Blog
