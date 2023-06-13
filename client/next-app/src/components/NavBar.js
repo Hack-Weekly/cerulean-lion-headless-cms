@@ -6,24 +6,18 @@ import logo from "@/image/logo.png";
 import Button from "@/components/Button";
 
 export default function NavBar() {
-  const signupButton = "Sign Up";
   const loginButton = "Login";
 
   return (
-    <div className="vertical-navbar">
-      <Image src={logo} alt="cerulean-lion" />
-      <h1 className="title-container font-heading text-center">
-        Cerulean Lion
-      </h1>
-      <div className="links-container">
-        <div className="nav-container font-general">
-          <Link href="/">Home</Link>
-          <Link href="/blog" className="navbar-links">
-            Blog
-          </Link>
-          <Button className="font-general" text={signupButton} />
-          <Button text={loginButton} />
-        </div>
+    <div className="vertical-navbar bg-center text-center">
+      <Image src={logo} alt="cerulean-lion" className="bg-center" />
+      <h1 className="title-container font-heading mb-5">Cerulean Lion</h1>
+      <div className="font-general">
+        <Link href="/">Home</Link>
+        <Link href="/blog" className="navbar-links">
+          Blog
+        </Link>
+        <Button text={loginButton} />
       </div>
     </div>
   );

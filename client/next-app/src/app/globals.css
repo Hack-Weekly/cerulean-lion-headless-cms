@@ -29,15 +29,15 @@
 .links-container {
   /* height: 80%; */
   /* bottom: 0; */
-  display: grid;
-  place-items: center;
+  /* display: grid;
+  place-items: center; */
 }
 
 .nav-container {
   /* height: 100%; */
-  display: grid;
-  place-items: center;
-  grid-gap: 10px;
+  /* display: grid; */
+  /* place-items: center; */
+  /* grid-gap: 10px; */
 }
 
 .title-container {
