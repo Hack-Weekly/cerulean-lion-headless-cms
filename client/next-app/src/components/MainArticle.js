@@ -1,14 +1,12 @@
 "use client";
+import Image from "next/image";
+import logo from "@/image/logo.png";
+
 export default function MainArticle() {
   return (
-    <div className="main-article">
-      <div className="main-article-image-container">
-        <img className="main-article-image"></img>
-        <p className="main-article-desc">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempo incididunt ut labore et dolore magna aliqua
-        </p>
-      </div>
+    <div>
+      <p>hello whatever text</p>
+      <Image src={logo} alt="logo" width={50} height={100} />
     </div>
   );
 }
