@@ -1,5 +1,12 @@
 "use client";
 
+import Register from "@/components/auth/Register";
+
 export default function Page() {
-  return <h1>hello</h1>;
+  return (
+    <div>
+      <h1>Hello World</h1>
+      <Register />
+    </div>
+  );
 }
