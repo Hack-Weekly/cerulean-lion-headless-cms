@@ -70,6 +70,6 @@ Our projects technical requirements are as follows:
 
 - User's Blog Page Design: Exo
 
-- FE: Random Dude, DNA, Eddie Padilla (1Dedios)
+- Front-End Team: Random Dude, DNA, Eddie Padilla (1Dedios)
 
-- BE: TOM, Shotdown, SomeDude
+- Back-End Team: TOM, Shotdown, SomeDude
