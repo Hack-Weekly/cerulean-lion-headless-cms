@@ -13,10 +13,11 @@ export default function HeroSection() {
       <div className="hero-content text-center text-white">
         <div className="max-w-md">
           <h2 className="mb-5 text-3xl font-general">
-            where
-            <h1 className="text-amber-500 font-heading text-5xl font-bold italic">
+            where <br />
+            <span className="text-amber-500 font-heading text-5xl font-bold italic">
               LIONS
-            </h1>
+            </span>
+            <br />
             gather
           </h2>
           <p className="mb-5 font-inter">
