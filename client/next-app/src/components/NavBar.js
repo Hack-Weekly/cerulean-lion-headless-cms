@@ -9,8 +9,8 @@ export default function NavBar() {
   const loginButton = "Login";
 
   return (
-    <div className="vertical-navbar bg-center text-center">
-      <Image src={logo} alt="cerulean-lion" className="bg-center" />
+    <div className="vertical-navbar text-center">
+      <Image src={logo} alt="cerulean-lion" />
       <h1 className="title-container font-heading mb-5 text-5xl text-amber-500 drop-shadow-lg">
         Cerulean Lion
       </h1>

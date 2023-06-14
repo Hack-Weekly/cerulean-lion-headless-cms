@@ -13,8 +13,6 @@
 }
 
 .vertical-navbar {
-  left: 0;
-  top: 0;
   height: 100vh;
   background-color: #2a52be;
 }
