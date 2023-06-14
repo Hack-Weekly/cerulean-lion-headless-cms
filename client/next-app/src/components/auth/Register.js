@@ -2,7 +2,7 @@ export default function Register() {
   return (
     <div>
       <section>
-        <div class="w-full lg:max-w-xl p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow-xl dark:bg-gray-800">
+        <div class="w-96 my-auto mx-auto sm:p-8 bg-white rounded-lg shadow-xl dark:bg-gray-800">
           <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
             Get a Cerulean Lion Account 🦁
           </h2>
