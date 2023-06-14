@@ -1,12 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Tilt+Prism&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -16,49 +12,15 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 .vertical-navbar {
-  position: fixed;
-  left: 0;
-  top: 0;
   height: 100vh;
-  width: 15%;
-  background-color: #007BA7;
-  padding: 20px;
+  background-color: #2a52be;
 }
 
 .navbar-links {
   display: block;
-  /* margin-bottom: 10px; */
-  /* color: #333; */
-  text-decoration: none;
-}
-
-.links-container {
-  height: 80%;
-  /* bottom: 0; */
-  display: grid;
-  place-items: center;
-
-}
-
-.nav-container {
-  /* height: 100%; */
-  display: grid;
-  place-items: center;
-  grid-gap: 10px;
 }
 
 .title-container {
   margin-top: 15%;
-  font-size: 30px;
 }
