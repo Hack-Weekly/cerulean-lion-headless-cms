@@ -11,8 +11,10 @@ export default function NavBar() {
   return (
     <div className="vertical-navbar bg-center text-center">
       <Image src={logo} alt="cerulean-lion" className="bg-center" />
-      <h1 className="title-container font-heading mb-5">Cerulean Lion</h1>
-      <div className="font-general">
+      <h1 className="title-container font-heading mb-5 text-5xl text-amber-500 drop-shadow-lg">
+        Cerulean Lion
+      </h1>
+      <div className="font-general text-white">
         <Link href="/">Home</Link>
         <Link href="/blog" className="navbar-links">
           Blog

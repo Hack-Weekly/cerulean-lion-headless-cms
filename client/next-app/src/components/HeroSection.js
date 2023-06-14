@@ -10,14 +10,25 @@ export default function HeroSection() {
       style={{ backgroundImage: `url(${background.src})` }}
     >
       <div className="hero-overlay bg-opacity-60"></div>
-      <div className="hero-content text-center text-neutral-content">
+      <div className="hero-content text-center text-white">
         <div className="max-w-md">
-          <h1 className="mb-5 text-5xl font-bold">Where Lions Gather</h1>
-          <p className="mb-5">
-            Remember Tumblr? We've turned it into the Lion's Den. Click the
-            button below!
+          <h2 className="mb-5 text-3xl font-general">
+            where
+            <h1 className="text-amber-500 font-heading text-5xl font-bold italic">
+              LIONS
+            </h1>
+            gather
+          </h2>
+          <p className="mb-5 font-inter">
+            Remember Tumblr? Well you're more sophisticated now so welcome to
+            the Lion's Den. Click the button below!
           </p>
-          <Button text={signupButton} />
+          <Button
+            className={
+              "btn lion border-2 border-amber-500 shadow-lg hover:text-amber-500 font-general"
+            }
+            text={signupButton}
+          />
         </div>
       </div>
     </div>
