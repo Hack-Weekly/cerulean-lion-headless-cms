@@ -6,8 +6,6 @@
 
 ## Project Overview
 
----
-
 The Cerulean Lion Team was originally tasked with building a functional headless CMS website, with a decoupled front-end and back-end. The project was to have a duration of a week. However, three days into the project the lead disappeared. With a day of figuring out who was going to lead and then getting the team back on track, we had 3 days left. Nonetheless, for 3 days of work, I am proud of the work the contributors were able to accomplish considering their experience levels.
 
 ![Home Page ScreenShot](/client/next-app/src/image/Screenshot.png)
@@ -16,23 +14,17 @@ The Cerulean Lion Team was originally tasked with building a functional headless
 
 ## Tech Stack
 
----
-
 Our tech stack consists of Figma/Sketch for design, Next.Js/React for frontend implementation, and Express as our pseudo-backend. To save user data for authentication and posts the DB used was MongoDB.
 
 <br>
 
 ## Build Process
 
----
-
 Our build process was simple. First, we designed our site using a vector editor such as Figma/Sketch. Next, we handed off our design to our Front End dev team, who then used React to create components that render our site according to the design teams specifications. Back End team created the API endpoints through Express. The API endpoints are as follows:
 
 <br>
 
 ## API Endpoints:
-
----
 
 POST /auth/register: Allows a user to register by creating a new user with a username and password. Returns the created user object if successful.
 
@@ -62,8 +54,6 @@ POST /auth/login: Handles user authentication by checking the provided username 
 
 ## Project Requirements </br>
 
----
-
 Our projects technical requirements are as follows:
 
 - Develop a functional headless CMS website.
@@ -73,8 +63,6 @@ Our projects technical requirements are as follows:
 <br>
 
 ## Project Roles
-
----
 
 - Project Lead: Eddie Padilla (1Dedios)
 
