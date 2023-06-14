@@ -10,6 +10,8 @@
 
 The Cerulean Lion Team was originally tasked with building a functional headless CMS website, with a decoupled front-end and back-end. The project was to have a duration of a week. However, three days into the project the lead disappeared. With a day of figuring out who was going to lead and then getting the team back on track, we had 3 days left. Nonetheless, for 3 days of work, I am proud of the work the contributors were able to accomplish considering their experience levels.
 
+![Home Page ScreenShot](/client/next-app/src/image/Screenshot.png)
+
 <br>
 
 ## Tech Stack
