@@ -3,6 +3,7 @@ import Button from "@/components/Button";
 
 export default function HeroSection() {
   const signupButton = "Sign Up";
+  const signupButtonRoute = "/auth/register";
 
   return (
     <div
@@ -13,10 +14,11 @@ export default function HeroSection() {
       <div className="hero-content text-center text-white">
         <div className="max-w-md">
           <h2 className="mb-5 text-3xl font-general">
-            where
-            <h1 className="text-amber-500 font-heading text-5xl font-bold italic">
+            where <br />
+            <span className="text-amber-500 font-heading text-5xl font-bold italic">
               LIONS
-            </h1>
+            </span>
+            <br />
             gather
           </h2>
           <p className="mb-5 font-inter">
@@ -28,6 +30,8 @@ export default function HeroSection() {
               "btn lion border-2 border-amber-500 shadow-lg hover:text-amber-500 font-general"
             }
             text={signupButton}
+            onClick={() => (location.href = "/auth/register")}
+            value="register"
           />
         </div>
       </div>
